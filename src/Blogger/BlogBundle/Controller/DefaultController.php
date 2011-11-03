@@ -10,6 +10,6 @@ class DefaultController extends Controller
     
     public function indexAction()
     {
-        return $this->render('BloggerBlogBundle:Default:index.html.twig', array('name' => 'Dziamid'));
+        return $this->render('BloggerBlogBundle:Default:index.html.twig', array('o' => time()));
     }
 }
