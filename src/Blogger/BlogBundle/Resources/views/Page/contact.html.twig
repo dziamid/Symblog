@@ -9,6 +9,10 @@
         <h1>Contact us</h1>
     </header>
     <article>
-        
+        <form action="{{ path('BBBundle_contact') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
+            
+            <input type="submit">
+        </form>
     </article>
 {% endblock %}
