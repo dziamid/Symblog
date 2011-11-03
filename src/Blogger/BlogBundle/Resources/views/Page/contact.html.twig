@@ -9,7 +9,7 @@
         <h1>Contact us</h1>
     </header>
     <article>
-        <form action="{{ path('BBBundle_contact') }}" method="post" {{ form_enctype(form) }}>
+        <form class="blogger" action="{{ path('BBBundle_contact') }}" method="post" {{ form_enctype(form) }}>
             {{ form_errors(form) }}
 
             {{ form_row(form.name) }}

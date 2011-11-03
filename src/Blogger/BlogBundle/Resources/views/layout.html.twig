@@ -4,6 +4,11 @@
   Sidebar content
 {% endblock %}
 
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('bundles/bloggerblog/css/blog.css') }}" type="text/css" />
+{% endblock %}
+
 {% block navigation %}
   <nav>
     <ul class="navigation">
