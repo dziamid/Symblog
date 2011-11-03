@@ -5,11 +5,11 @@ namespace Blogger\BlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 
-class DefaultController extends Controller
+class PageController extends Controller
 {
     
     public function indexAction()
     {
-        return $this->render('BloggerBlogBundle:Default:index.html.twig', array('o' => time()));
+        return $this->render('BloggerBlogBundle:Page:index.html.twig', array('o' => time()));
     }
 }
