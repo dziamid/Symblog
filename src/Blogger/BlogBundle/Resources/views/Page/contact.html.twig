@@ -10,8 +10,14 @@
     </header>
     <article>
         <form action="{{ path('BBBundle_contact') }}" method="post" {{ form_enctype(form) }}>
-            {{ form_widget(form) }}
-            
+            {{ form_errors(form) }}
+
+            {{ form_row(form.name) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.subject) }}
+            {{ form_row(form.body) }}
+
+            {{ form_rest(form) }}
             <input type="submit">
         </form>
     </article>
