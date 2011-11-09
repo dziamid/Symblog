@@ -56,6 +56,12 @@ class Blog
      */
     private $updated;
 
+    /**
+     * @var string $body
+     *
+     * @ORM\Column(name="body", type="string")
+     */
+    private $body;
 
     /**
      * Get id
@@ -165,5 +171,25 @@ class Blog
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Set body
+     *
+     * @param string $body
+     */
+    public function setBody($body)
+    {
+        $this->body = $body;
+    }
+
+    /**
+     * Get body
+     *
+     * @return string 
+     */
+    public function getBody()
+    {
+        return $this->body;
     }
 }
