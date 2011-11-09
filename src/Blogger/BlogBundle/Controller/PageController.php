@@ -22,6 +22,7 @@ class PageController extends Controller
     public function contactAction()
     {
         $enquiry = new Enquiry();
+        $enquiry->setBody('Describe what\'s your problem');
         $form = $this->createForm(new EnquiryType(), $enquiry);
         $request = $this->getRequest();
 
