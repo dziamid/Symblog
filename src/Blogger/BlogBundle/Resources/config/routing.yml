@@ -2,16 +2,16 @@ BBBundle_homepage:
     pattern:  /
     defaults: { _controller: BloggerBlogBundle:Page:index }
     requirements:
-        method: _GET
+        _method: GET
 
 BBBundle_about:
     pattern:  /about
     defaults: { _controller: BloggerBlogBundle:Page:about }
     requirements:
-        method: _GET
+        _method: GET
 
 BBBundle_contact:
     pattern:  /contact
     defaults: { _controller: BloggerBlogBundle:Page:contact }
     requirements:
-        method: _GET
+        _method: GET|POST

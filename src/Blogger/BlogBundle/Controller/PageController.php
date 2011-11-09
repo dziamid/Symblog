@@ -28,12 +28,28 @@ class PageController extends Controller
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-
+                $this->sendContactEmail($enquiry);
                 return $this->redirect($this->generateUrl('BBBundle_contact'));
             }
         }
         return $this->render('BloggerBlogBundle:Page:contact.html.twig', array(
             'form' => $form->createView(),
         ));
+    }
+
+    protected function sendContactEmail($enquiry)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject($enquiry->getSubject())
+            ->setFrom('hikdziamid@gmail.com')
+            ->setTo($enquiry->getEmail())
+            ->setBody($this->renderView('BloggerBlogBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
+        $this->get('mailer')->send($message);
+
+        $this->get('session')->setFlash('blogger-notice', 'Your contact enquiry was successfully sent. Thank you!');
+
+        // Redirect - This is important to prevent users re-posting
+        // the form if they refresh the page
+        return $this->redirect($this->generateUrl('BBBundle_contact'));
     }
 }

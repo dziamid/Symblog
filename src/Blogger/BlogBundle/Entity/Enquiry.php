@@ -2,6 +2,9 @@
 
 namespace Blogger\BlogBundle\Entity;
 
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Validator\Constraints as C;
+
 class Enquiry
 {
     protected $name;
@@ -51,5 +54,14 @@ class Enquiry
     public function getSubject()
     {
         return $this->subject;
+    }
+    
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('name', new C\NotBlank());
+        $metadata->addPropertyConstraint('email', new C\Email());
+        $metadata->addPropertyConstraint('subject', new C\NotBlank());
+        $metadata->addPropertyConstraint('subject', new C\MaxLength(50));
+        $metadata->addPropertyConstraint('body', new C\MaxLength(50));
     }
 }
