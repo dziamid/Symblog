@@ -18,6 +18,7 @@ class Blog
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\HasLifecycleCallbacks()
      */
     private $id;
 
@@ -62,6 +63,12 @@ class Blog
      * @ORM\Column(name="body", type="string")
      */
     private $body;
+
+    public function __construct()
+    {
+        $this->setCreated(new \DateTime());
+        $this->setUpdated(new \DateTime());
+    }
 
     /**
      * Get id
@@ -191,5 +198,13 @@ class Blog
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * @ORM\preUpdate
+     */
+    public function setUpdatedValue()
+    {
+       $this->setUpdated(new \DateTime());
     }
 }

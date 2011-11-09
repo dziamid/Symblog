@@ -13,8 +13,6 @@ class BlogFixtures implements FixtureInterface
         $blog1->setAuthor('Dziamid');
         $blog1->setTitle('A day with Symfony2');
         $blog1->setImage('beach.jpg');
-        $blog1->setCreated(new \DateTime());
-        $blog1->setUpdated($blog1->getCreated());
         $blog1->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur...');
         $manager->persist($blog1);
 
