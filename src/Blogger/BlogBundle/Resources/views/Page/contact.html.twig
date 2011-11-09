@@ -8,6 +8,12 @@
     <header>
         <h1>Contact us</h1>
     </header>
+
+    {% if app.session.hasFlash('blogger-notice') %}
+        <div class="blogger-notice">
+            {{ app.session.flash('blogger-notice') }}
+        </div>
+    {% endif %}
     <article>
         <form class="blogger" action="{{ path('BBBundle_contact') }}" novalidate="true" method="post" {{ form_enctype(form) }}>
             {{ form_errors(form) }}

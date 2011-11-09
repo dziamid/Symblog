@@ -42,7 +42,7 @@ class PageController extends Controller
     {
         $message = \Swift_Message::newInstance()
             ->setSubject($enquiry->getSubject())
-            ->setFrom('hikdziamid@gmail.com')
+            ->setFrom($this->container->getParameter('blogger_blog.emails.contact'))
             ->setTo($enquiry->getEmail())
             ->setBody($this->renderView('BloggerBlogBundle:Page:contactEmail.txt.twig', array('enquiry' => $enquiry)));
         $this->get('mailer')->send($message);
