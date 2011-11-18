@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class BlogRepository extends EntityRepository
 {
+    public function getLatest($limit = null)
+    {
+        $qb = $this->createQueryBuilder('b')
+            ->addOrderBy('b.created', 'DESC');
+
+        if (null !== $limit) {
+            $qb->setMaxResults($limit);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

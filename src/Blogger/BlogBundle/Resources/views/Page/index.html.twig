@@ -5,5 +5,17 @@
 {% endblock %}
 
 {% block body %}
-    Today is {{ o|date() }}
+    {% for blog in blogs %}
+<article>
+    <header><h2><a href="{{ path('BBBundle_blog_show', {'id': blog.id}) }}">{{ blog.title }}</a></h2></header>
+    <div class="date">
+        <time datetime="blog.created | date('c')">
+            Created {{ blog.created | date('j, F') }}
+        </time>
+    </div>
+
+</article>
+    {% else %}
+<p>There are no articles yet</p>
+    {% endfor %}
 {% endblock %}
