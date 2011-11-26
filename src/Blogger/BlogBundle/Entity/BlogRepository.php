@@ -23,4 +23,16 @@ class BlogRepository extends EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function getOneWithComments($blog_id)
+    {
+        $qb = $this->createQueryBuilder('b')
+            ->select('b,c')
+            ->where('b.id = :blog_id')
+            ->leftJoin('b.comments', 'c')
+            ->addOrderBy('c.created')
+            ->setParameter('blog_id', $blog_id);
+
+        return $qb->getQuery()->getSingleResult();
+    }
 }

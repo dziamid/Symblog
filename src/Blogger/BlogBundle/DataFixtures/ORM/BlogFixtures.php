@@ -26,6 +26,13 @@ class BlogFixtures extends AbstractFixture implements OrderedFixtureInterface
         $blog2->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque.');
         $manager->persist($blog2);
 
+        $blog3 = new Blog();
+        $blog3->setAuthor('Danny');
+        $blog3->setTitle('No comments blog');
+        $blog3->setImage('no-image.jpg');
+        $blog3->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque.');
+        $manager->persist($blog3);
+
         $manager->flush();
 
         $this->addReference('blog-1', $blog1);

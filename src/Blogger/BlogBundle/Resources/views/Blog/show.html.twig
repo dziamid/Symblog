@@ -19,4 +19,14 @@
             <p>{{ blog.body }}</p>
         </div>
     </article>
+<div class="comments">
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in blog.comments %}
+            <li><b>{{ comment.author }}</b> wrote: {{ comment.body }}</li>
+        {% else %}
+            <li>There are no comments yet</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}

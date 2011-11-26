@@ -10,7 +10,7 @@ class BlogController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $blog = $em->getRepository('BloggerBlogBundle:Blog')->find($id);
+        $blog = $em->getRepository('BloggerBlogBundle:Blog')->getOneWithComments($id);
         if (!$blog) {
             throw $this->createNotFoundException('Unable to find blog post');
         }
