@@ -7,13 +7,17 @@
 {% block body %}
     {% for blog in blogs %}
 <article>
-    <header><h2><a href="{{ path('BBBundle_blog_show', {'id': blog.id}) }}">{{ blog.title }}</a></h2></header>
     <div class="date">
         <time datetime="blog.created | date('c')">
             Created {{ blog.created | date('j, F') }}
         </time>
     </div>
-
+    <header><h2><a href="{{ path('BBBundle_blog_show', {'id': blog.id}) }}">{{ blog.title }}</a></h2></header>
+    <img src="{{ asset(['images/', blog.image]|join) }}" alt="{{ blog.title }}">
+    <div class="snippet">
+        <p>{{ blog.body(50) }}...</p>
+        <p class="continue"><a href="{{ path('BBBundle_blog_show', {'id': blog.id}) }}">Continue reading..</a></p>
+    </div>
 </article>
     {% else %}
 <p>There are no articles yet</p>

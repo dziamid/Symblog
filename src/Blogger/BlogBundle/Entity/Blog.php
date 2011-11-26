@@ -195,9 +195,13 @@ class Blog
      *
      * @return string 
      */
-    public function getBody()
+    public function getBody($limit = null)
     {
-        return $this->body;
+        $body = $this->body;
+        if (null !== $limit) {
+            $body = substr($body, 0, $limit);
+        }
+        return $body;
     }
 
     /**
