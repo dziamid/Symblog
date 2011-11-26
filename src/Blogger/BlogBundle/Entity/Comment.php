@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Blogger\BlogBundle\Entity\Comment
  *
- * @ORM\Table()
+ * @ORM\Table(name="comment")
  * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Entity\CommentRepository")
  */
 class Comment
@@ -42,6 +42,15 @@ class Comment
      */
     private $author;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Blog", inversedBy="comments")
+     */
+    private $blog;
+
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+    }
 
     /**
      * Get id
@@ -111,5 +120,25 @@ class Comment
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set blog
+     *
+     * @param Blogger\BlogBundle\Entity\Blog $blog
+     */
+    public function setBlog(\Blogger\BlogBundle\Entity\Blog $blog)
+    {
+        $this->blog = $blog;
+    }
+
+    /**
+     * Get blog
+     *
+     * @return Blogger\BlogBundle\Entity\Blog 
+     */
+    public function getBlog()
+    {
+        return $this->blog;
     }
 }

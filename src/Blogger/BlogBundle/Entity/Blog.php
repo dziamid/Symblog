@@ -3,6 +3,7 @@
 namespace Blogger\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Blogger\BlogBundle\Entity\Blog
@@ -64,10 +65,16 @@ class Blog
      */
     private $body;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -210,5 +217,25 @@ class Blog
     public function setUpdatedValue()
     {
        $this->setUpdated(new \DateTime());
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Blogger\BlogBundle\Entity\Comment $comments
+     */
+    public function addComment(\Blogger\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
