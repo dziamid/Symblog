@@ -1,0 +1,7 @@
+<form class="blogger" action="{{ path('BBBundle_comment_create', {'blog_id': comment.blog.id}) }}" method="post" {{ form_enctype(form) }}>
+    {{ form_row(form.body) }}
+    {{ form_rest(form) }}
+    <p>
+        <input type="submit" value="Send comment" />
+    </p>
+</form>
