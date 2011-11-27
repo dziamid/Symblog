@@ -1,0 +1,11 @@
+{% for comment in comments %}
+<article class="comment {{ cycle(['even','odd'], loop.index0) }}" id="comment-{{ comment.id }}">
+    <header>
+        <span class="highlight">{{ comment.author }}</span> commented at
+        <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('l, F j, Y') }}</time>
+    </header>
+    <p>{{ comment.body }}</p>
+</article>
+{% else %}
+    There are no comments yet
+{% endfor %}
