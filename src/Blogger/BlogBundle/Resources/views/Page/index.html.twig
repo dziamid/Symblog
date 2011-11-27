@@ -18,6 +18,17 @@
         <p>{{ blog.body(50) }}...</p>
         <p class="continue"><a href="{{ path('BBBundle_blog_show', {'id': blog.id}) }}">Continue reading..</a></p>
     </div>
+    <footer class="meta">
+        <p>
+            <a href="{{ path('BBBundle_blog_show', {'id': blog.id}) }}#comments">
+                Comments: {{ blog.comments|length }}
+            </a>
+        </p>
+        <p>
+            Posted by <span class="highlight">{{ blog.author }}</span> at
+            <date timestamp="{{ blog.created|date('c') }}">{{ blog.created|date('h:iA') }}</date>
+        </p>
+    </footer>
 </article>
     {% else %}
 <p>There are no articles yet</p>

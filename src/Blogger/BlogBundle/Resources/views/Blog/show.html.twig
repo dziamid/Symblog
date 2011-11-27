@@ -19,7 +19,7 @@
             <p>{{ blog.body }}</p>
         </div>
     </article>
-    <section class="comments">
+    <section class="comments" id="comments">
         <section class="previous-comments">
             <h3>Comments</h3>
             {% include 'BloggerBlogBundle:Comment:index.html.twig' with {'comments': blog.comments} %}
