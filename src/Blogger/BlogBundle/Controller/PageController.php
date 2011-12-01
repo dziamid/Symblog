@@ -43,6 +43,17 @@ class PageController extends Controller
         ));
     }
 
+    public function sidebarAction()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $tags = $em->getRepository('BloggerBlogBundle:Blog')->getTags();
+        $weights = $em->getRepository('BloggerBlogBundle:Blog')->getTagWeights($tags);
+
+        return $this->render('BloggerBlogBundle:Page:sidebar.html.twig', array(
+            'tags' => $weights,
+        ));
+    }
+
     protected function sendContactEmail($enquiry)
     {
         $message = \Swift_Message::newInstance()
@@ -58,4 +69,6 @@ class PageController extends Controller
         // the form if they refresh the page
         return $this->redirect($this->generateUrl('BBBundle_contact'));
     }
+
+
 }

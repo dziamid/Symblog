@@ -12,31 +12,33 @@ class BlogFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load($manager)
     {
-        $blog1 = new Blog();
-        $blog1->setAuthor('Dziamid');
-        $blog1->setTitle('A day with Symfony2');
-        $blog1->setImage('cammo.jpg');
-        $blog1->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque.');
-        $manager->persist($blog1);
+        $b = new Blog();
+        $b->setAuthor('Dziamid');
+        $b->setTitle('A day with Symfony2');
+        $b->setImage('cammo.jpg');
+        $b->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque.');
+        $b->setTags('lorem,ipsum,tag1');
+        $manager->persist($b);
+        $this->addReference('blog-1', $b);
 
-        $blog2 = new Blog();
-        $blog2->setAuthor('Paul');
-        $blog2->setTitle('A day building birds nest');
-        $blog2->setImage('birds.jpg');
-        $blog2->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque.');
-        $manager->persist($blog2);
+        $b = new Blog();
+        $b->setAuthor('Paul');
+        $b->setTitle('A day building birds nest');
+        $b->setImage('birds.jpg');
+        $b->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque.');
+        $b->setTags('lorem,ipsum,tag2');
+        $manager->persist($b);
+        $this->addReference('blog-2', $b);
 
-        $blog3 = new Blog();
-        $blog3->setAuthor('Danny');
-        $blog3->setTitle('No comments blog');
-        $blog3->setImage('no-image.jpg');
-        $blog3->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque.');
-        $manager->persist($blog3);
+        $b = new Blog();
+        $b->setAuthor('Danny');
+        $b->setTitle('No comments blog');
+        $b->setImage('no-image.jpg');
+        $b->setBody('Lorem ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque. Nulla consectetur ipsum dolor sit d us imperdiet justo scelerisque.');
+        $b->setTags('lorem,tag3');
+        $manager->persist($b);
 
         $manager->flush();
-
-        $this->addReference('blog-1', $blog1);
-        $this->addReference('blog-2', $blog2);
 
     }
 
