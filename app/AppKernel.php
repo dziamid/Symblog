@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new Blogger\BlogBundle\BloggerBlogBundle(),
             new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

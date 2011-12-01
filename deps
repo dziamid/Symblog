@@ -73,3 +73,10 @@
 [DoctrineMigrationsBundle]
     git=http://github.com/symfony/DoctrineMigrationsBundle.git
     target=/bundles/Symfony/Bundle/DoctrineMigrationsBundle
+
+[pagerfanta]
+    git=https://github.com/whiteoctober/Pagerfanta.git
+
+[PagerfantaBundle]
+    git=https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+    target=/bundles/WhiteOctober/PagerfantaBundle
