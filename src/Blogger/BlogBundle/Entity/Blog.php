@@ -70,6 +70,11 @@ class Blog
      */
     private $comments;
 
+    /**
+     * @ORM\Column(name="tags", type="string", length=255)
+     */
+    private $tags;
+
     public function __construct()
     {
         $this->setCreated(new \DateTime());
@@ -237,5 +242,15 @@ class Blog
     public function getComments()
     {
         return $this->comments;
+    }
+
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
