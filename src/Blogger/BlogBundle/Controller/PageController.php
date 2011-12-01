@@ -6,16 +6,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Blogger\BlogBundle\Entity\Enquiry;
 use Blogger\BlogBundle\Form\EnquiryType;
 
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+
 class PageController extends Controller
 {
     
     public function indexAction()
     {
         $em = $this->getDoctrine()->getEntityManager();
-        $blogs = $em->getRepository('BloggerBlogBundle:Blog')->getLatest(10);
+        $qb = $em->getRepository('BloggerBlogBundle:Blog')->getLatestQB();
+
+        $pager = new Pagerfanta(new DoctrineORMAdapter($qb, true));
+        $pager->setMaxPerPage(2);
+
 
         return $this->render('BloggerBlogBundle:Page:index.html.twig', array(
-            'blogs' => $blogs,
+            'blogs' => $pager->getIterator(),
+            'pager' => $pager,
         ));
     }
 
