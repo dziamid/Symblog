@@ -1,0 +1,34 @@
+.pagerfanta {
+}
+
+.pagerfanta a,
+.pagerfanta span {
+    display: inline-block;
+    border: 1px solid black;
+    color: black;
+    margin-right: .2em;
+    padding: .25em .35em;
+}
+
+.pagerfanta a {
+    text-decoration: none;
+    color: black;
+}
+
+.pagerfanta a:hover {
+    background: #ccc;
+}
+
+.pagerfanta .dots {
+    border-width: 0;
+}
+
+.pagerfanta .current {
+    background: #ccc;
+    font-weight: bold;
+}
+
+.pagerfanta .disabled {
+    border-color: #ccc;
+    color: #ccc;
+}

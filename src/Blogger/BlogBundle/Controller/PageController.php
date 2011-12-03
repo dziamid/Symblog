@@ -19,6 +19,8 @@ class PageController extends Controller
 
         $pager = new Pagerfanta(new DoctrineORMAdapter($qb, true));
         $pager->setMaxPerPage(2);
+        $request = $this->getRequest();
+        $pager->setCurrentPage($request->query->get('page', 1));
 
 
         return $this->render('BloggerBlogBundle:Page:index.html.twig', array(

@@ -1,5 +1,11 @@
 {% extends 'BloggerBlogBundle::layout.html.twig' %}
 
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/pagerfanta.css') }}" type="text/css" media="all" />
+{% endblock %}
+
 {% block title %}
   Main page
 {% endblock %}
@@ -33,4 +39,8 @@
     {% else %}
 <p>There are no articles yet</p>
     {% endfor %}
+
+<div class="pagerfanta">
+    {{ pagerfanta(pager, 'default', {'routeName': 'BBBundle_homepage'}) }}
+</div>
 {% endblock %}
