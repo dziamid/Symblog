@@ -75,6 +75,11 @@ class Blog
      */
     private $tags;
 
+    /**
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->setCreated(new \DateTime());
@@ -252,5 +257,25 @@ class Blog
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
