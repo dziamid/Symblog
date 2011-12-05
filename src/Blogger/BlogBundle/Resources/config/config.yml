@@ -1,2 +1,4 @@
 parameters:
     blogger_blog.emails.contact: hikdziamid@gmail.com
+
+    blogger_blog.comments.latest_comment_limit: 5

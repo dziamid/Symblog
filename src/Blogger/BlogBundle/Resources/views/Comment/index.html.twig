@@ -1,8 +1,14 @@
 {% for comment in comments %}
 <article class="comment {{ cycle(['even','odd'], loop.index0) }}" id="comment-{{ comment.id }}">
     <header>
-        <span class="highlight">{{ comment.author }}</span> commented at
-        <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('l, F j, Y') }}</time>
+        <span class="highlight">{{ comment.author }}</span>
+        {% if show_date|default(1) %}
+            commented at <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('l, F j, Y') }}</time>
+        {% endif %}
+
+        {% if show_link|default(0) %}
+            commented on <a href="{{ path('BBBundle_blog_show', {'id': comment.blog.id}) }}#comment-{{ comment.id }}">"{{ comment.blog.title }}"</a>
+        {% endif %}
     </header>
     <p>{{ comment.body }}</p>
 </article>

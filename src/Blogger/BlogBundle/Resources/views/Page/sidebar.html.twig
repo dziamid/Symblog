@@ -10,3 +10,10 @@
         {% endfor %}
     </p>
 </section>
+
+<section class="comments">
+    <header>
+        <h3>Latest comments</h3>
+    </header>
+    {% include 'BloggerBlogBundle:Comment:index.html.twig' with {'comments': comments, 'show_link': 1, 'show_date': 0} %}
+</section>

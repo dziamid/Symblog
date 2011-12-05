@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
+    public function getLatest($limit = 10)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->select('c','b')
+            ->innerJoin('c.blog','b')
+            ->orderBy('c.created', 'desc');
+
+        if (null !== $limit) {
+            $qb->setMaxResults($limit);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
