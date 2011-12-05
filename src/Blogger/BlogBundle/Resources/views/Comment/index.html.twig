@@ -3,7 +3,7 @@
     <header>
         <span class="highlight">{{ comment.author }}</span>
         {% if show_date|default(1) %}
-            commented at <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date('l, F j, Y') }}</time>
+            commented <time datetime="{{ comment.created|date('c') }}">{{ comment.created|date_ago }}</time>
         {% endif %}
 
         {% if show_link|default(0) %}
