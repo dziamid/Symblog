@@ -6,8 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class BlogController extends Controller
 {
-    
-    public function showAction($id)
+    /**
+     *
+     * @return \Symfony\Bundle\FrameworkBundle\Controller\Response
+     * @throws \Symfony\Bundle\FrameworkBundle\Controller\NotFoundHttpException
+     */
+    public function showAction($id, $slug)
     {
         $em = $this->getDoctrine()->getEntityManager();
         $blog = $em->getRepository('BloggerBlogBundle:Blog')->getOneWithComments($id);

@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="blog")
  * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Entity\BlogRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Blog
 {
@@ -19,7 +20,6 @@ class Blog
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\HasLifecycleCallbacks()
      */
     private $id;
 
@@ -85,6 +85,22 @@ class Blog
         $this->setCreated(new \DateTime());
         $this->setUpdated(new \DateTime());
         $this->comments = new ArrayCollection();
+    }
+
+    /**
+     * @ORM\preUpdate
+     */
+    public function preUpdate()
+    {
+        $this->setUpdated(new \DateTime());
+    }
+
+    /**
+     * @ORM\prePersist
+     */
+    public function prePersist()
+    {
+        $this->setSlug($this->generateSlug($this->getTitle()));
     }
 
     /**
@@ -222,14 +238,6 @@ class Blog
     }
 
     /**
-     * @ORM\preUpdate
-     */
-    public function setUpdatedValue()
-    {
-       $this->setUpdated(new \DateTime());
-    }
-
-    /**
      * Add comments
      *
      * @param Blogger\BlogBundle\Entity\Comment $comments
@@ -277,5 +285,33 @@ class Blog
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public function generateSlug($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
     }
 }

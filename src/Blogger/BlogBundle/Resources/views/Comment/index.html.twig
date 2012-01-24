@@ -7,7 +7,7 @@
         {% endif %}
 
         {% if show_link|default(0) %}
-            commented on <a href="{{ path('BBBundle_blog_show', {'id': comment.blog.id}) }}#comment-{{ comment.id }}">"{{ comment.blog.title }}"</a>
+            commented on <a href="{{ path('BBBundle_blog_show', {'id': comment.blog.id,'slug': comment.blog.slug}) }}#comment-{{ comment.id }}">"{{ comment.blog.title }}"</a>
         {% endif %}
     </header>
     <p>{{ comment.body }}</p>
