@@ -40,6 +40,7 @@ class CommentController extends Controller
             $em->flush();
             $url = $this->generateUrl('BBBundle_blog_show', array(
                 'id' => $blog->getId(),
+                'slug' => $blog->getSlug(),
             ));
             return $this->redirect($url.'#comment-'.$comment->getId());
         }
