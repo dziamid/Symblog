@@ -1,5 +1,6 @@
 parameters:
 #    blogger_blog.example.class: Blogger\BlogBundle\Example
+    router.options.generator_base_class: Blogger\BlogBundle\Routing\Generator\BloggerUrlGenerator
 
 services:
 #    blogger_blog.example:
