@@ -1,7 +1,7 @@
 parameters:
 #    blogger_blog.example.class: Blogger\BlogBundle\Example
-    router.options.generator_base_class: Blogger\BlogBundle\Routing\Generator\BloggerUrlGenerator
 
+    router.options.generator_base_class: Blogger\BlogBundle\Routing\Generator\UrlGenerator
 services:
 #    blogger_blog.example:
 #        class: %blogger_blog.example.class%

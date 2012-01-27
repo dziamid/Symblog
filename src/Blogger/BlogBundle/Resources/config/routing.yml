@@ -18,12 +18,11 @@ BBBundle_contact:
 
 BBBundle_blog_show:
     pattern:  /{id}/{slug}
-    defaults: { _controller: BloggerBlogBundle:Blog:show }
+    defaults:
+        _controller: BloggerBlogBundle:Blog:show
     requirements:
         _method: GET
         id: \d+
-    options:
-        generator_class: blogUrlGenerator
 
 BBBundle_comment_create:
     pattern: /comment/{blog_id}
